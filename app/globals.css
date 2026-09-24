@@ -1,0 +1,182 @@
+@import "tailwindcss";
+@import "lenis/dist/lenis.css";
+
+:root {
+  --bone: #e6dece;
+  --bone-deep: #d8cdb8;
+  --ink: #13110e;
+  --ink-soft: #1c1914;
+  --signal: #e63512;
+  --signal-soft: #ff4d28;
+  --moss: #16362c;
+  --moss-deep: #0f241e;
+  --sand: #b8a686;
+  --night: #0b0a08;
+  --paper: var(--bone);
+  --paper-dim: #3a342c;
+  --stone: #7a7164;
+  --copper: var(--signal);
+  --copper-soft: var(--signal-soft);
+  --brass: #c4a46a;
+  --line: rgba(19, 17, 14, 0.14);
+  --line-strong: rgba(19, 17, 14, 0.28);
+  --paper-line: rgba(19, 17, 14, 0.12);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-cinematic: cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+@theme inline {
+  --color-bone: var(--bone);
+  --color-bone-deep: var(--bone-deep);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-signal: var(--signal);
+  --color-signal-soft: var(--signal-soft);
+  --color-moss: var(--moss);
+  --color-moss-deep: var(--moss-deep);
+  --color-sand: var(--sand);
+  --color-night: var(--night);
+  --color-paper: var(--paper);
+  --color-paper-dim: var(--paper-dim);
+  --color-stone: var(--stone);
+  --color-copper: var(--copper);
+  --color-copper-soft: var(--copper-soft);
+  --color-brass: var(--brass);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-paper-line: var(--paper-line);
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}
+
+html {
+  background: var(--bone);
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  background: var(--bone);
+  color: var(--ink);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-feature-settings: "ss01", "cv11";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--signal);
+  color: var(--bone);
+}
+
+:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 3px;
+}
+
+a {
+  text-underline-offset: 0.22em;
+}
+
+.display {
+  font-family: var(--font-display), Georgia, serif;
+  font-optical-sizing: auto;
+}
+
+.mono {
+  font-family: var(--font-mono), ui-monospace, monospace;
+}
+
+.site-grid {
+  width: min(1480px, calc(100% - 2.5rem));
+  margin-inline: auto;
+}
+
+@media (min-width: 768px) {
+  .site-grid {
+    width: min(1480px, calc(100% - 5.5rem));
+  }
+}
+
+@media (min-width: 1100px) {
+  .site-grid {
+    width: min(1480px, calc(100% - 8.5rem));
+  }
+}
+
+.index-mark {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+
+.measure {
+  max-width: 38rem;
+}
+
+.measure-wide {
+  max-width: 46rem;
+}
+
+.mask-line {
+  overflow: hidden;
+}
+
+.surface-bone {
+  background: var(--bone);
+  color: var(--ink);
+}
+
+.surface-ink {
+  background: var(--ink);
+  color: var(--bone);
+}
+
+.surface-moss {
+  background: var(--moss);
+  color: var(--bone);
+}
+
+.surface-signal {
+  background: var(--signal);
+  color: var(--bone);
+}
+
+.surface-night {
+  background: var(--night);
+  color: var(--bone);
+}
+
+.surface-ink .index-mark,
+.surface-moss .index-mark,
+.surface-signal .index-mark,
+.surface-night .index-mark {
+  color: color-mix(in srgb, var(--bone) 55%, transparent);
+}
+
+.kinetic-letter {
+  display: inline-block;
+  will-change: transform;
+}
+
+.signal-pulse {
+  offset-rotate: 0deg;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .kinetic-letter {
+    will-change: auto;
+  }
+}
