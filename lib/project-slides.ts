@@ -4,12 +4,19 @@ import type { StorySlide } from "@/components/experience/home/ProjectStorySlides
 export function storySlidesForProject(project: Project): StorySlide[] {
   const images =
     project.gallery && project.gallery.length > 0 ? project.gallery : [project.image];
+  const beats =
+    project.sections.length > 0
+      ? project.sections
+      : [{ heading: project.eyebrow, body: project.summary }];
 
-  return images.map((src, index) => {
-    const section = project.sections[index];
+  const count = Math.max(images.length, beats.length);
+
+  return Array.from({ length: count }, (_, index) => {
+    const section = beats[index % beats.length];
+    const src = images[index % images.length] ?? project.image;
     return {
       src,
-      alt: section ? `${project.name} - ${section.heading}` : project.imageAlt,
+      alt: `${project.name} — ${section?.heading ?? project.name}`,
       title: section?.heading ?? project.eyebrow,
       body: section?.body ?? project.summary,
     };

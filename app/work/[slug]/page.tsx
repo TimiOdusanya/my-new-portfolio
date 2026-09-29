@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ProjectStorySlideshow } from "@/components/experience/home/ProjectStorySlideshow";
 import { ArchitectureMap } from "@/components/work/ArchitectureMap";
-import { ImageReveal } from "@/components/motion/ImageReveal";
 import { getProject, projects } from "@/data/projects";
 import { site } from "@/data/site";
 import { createMetadata } from "@/lib/seo";
+import { storySlidesForProject } from "@/lib/project-slides";
 
 type WorkPageProps = {
   params: Promise<{ slug: string }>;
@@ -33,6 +34,7 @@ export default async function WorkPage({ params }: WorkPageProps) {
   if (!project) notFound();
 
   const next = projects.find((item) => item.index > project.index) ?? projects[0];
+  const slides = storySlidesForProject(project);
 
   return (
     <article className="pt-32">
@@ -75,15 +77,7 @@ export default async function WorkPage({ params }: WorkPageProps) {
       </header>
 
       <div className="site-grid">
-        <div className="border border-line p-2 md:p-3">
-          <ImageReveal
-            src={project.image}
-            alt={project.imageAlt}
-            className="aspect-[16/9] w-full"
-            sizes="100vw"
-            priority
-          />
-        </div>
+        <ProjectStorySlideshow slides={slides} tone="bone" imageClassName="border-ink/10" />
       </div>
 
       <section className="site-grid grid gap-12 py-20 lg:grid-cols-[1.1fr_0.9fr]">

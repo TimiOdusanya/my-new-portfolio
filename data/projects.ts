@@ -18,8 +18,12 @@ export const projects: Project[] = [
     imageAlt: "CLIMB AI-native investment banking platform interface",
     gallery: [
       "/work/climb.png",
-      "/work/slides/climb-live.png",
-      "/work/slides/climb-live-2.png",
+      "/work/slides/climb-home.png",
+      "/work/slides/climb-funds.png",
+      "/work/slides/climb-fund.png",
+      "/work/slides/climb-pipeline.png",
+      "/work/slides/climb-graph.png",
+      "/work/slides/climb-network.png",
     ],
     metrics: [
       { value: "Gmail + Outlook", label: "OAuth CRM sync" },
@@ -100,8 +104,10 @@ export const projects: Project[] = [
     imageAlt: "Loubby AI talent and payroll platform",
     gallery: [
       "/work/loubby.png",
-      "/work/slides/loubby-live.png",
+      "/work/slides/loubby-live-1.png",
       "/work/slides/loubby-live-2.png",
+      "/work/slides/loubby-live-3.png",
+      "/work/slides/loubby-live-4.png",
     ],
     metrics: [
       { value: "200K+", label: "Active users" },
@@ -188,9 +194,9 @@ export const projects: Project[] = [
     image: "/work/gopaddi.png",
     imageAlt: "GoPaddi travel and booking platform",
     gallery: [
-      "/work/gopaddi.png",
       "/work/slides/gopaddi-live.png",
       "/work/slides/gopaddi-live-2.png",
+      "/work/gopaddi.png",
     ],
     metrics: [
       { value: "Flights · Hotels", label: "Booking surfaces" },
@@ -319,6 +325,7 @@ export const projects: Project[] = [
     href: "https://www.voyatekgroup.com/",
     image: "/work/voyatek.png",
     imageAlt: "Voyatek Group website",
+    gallery: ["/work/slides/voyatek-live.png", "/work/voyatek.png"],
     metrics: [{ value: "Admin + site", label: "Recruitment and publishing" }],
     stack: ["Next.js", "TypeScript", "Node.js"],
     problem:
@@ -407,6 +414,7 @@ export const projects: Project[] = [
     href: "https://flex-living-frontend-timi.vercel.app/",
     image: "/work/flex.png",
     imageAlt: "The Flex flexible space discovery platform",
+    gallery: ["/work/slides/flex-live.png", "/work/flex.png"],
     metrics: [{ value: "LLM search", label: "Personalised discovery" }],
     stack: ["Next.js", "TypeScript", "Node.js"],
     problem:
@@ -445,6 +453,7 @@ export const projects: Project[] = [
     href: "https://shiftsync-frontend-tau.vercel.app/",
     image: "/work/shiftsync.png",
     imageAlt: "ShiftSync team scheduling platform",
+    gallery: ["/work/slides/shiftsync-live.png", "/work/shiftsync.png"],
     metrics: [{ value: "Conflicts", label: "Automated detection" }],
     stack: ["Next.js", "TypeScript", "Node.js"],
     problem:

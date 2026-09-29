@@ -46,11 +46,11 @@ export function CareerSpine() {
         {/* <h2 className="display mt-5 text-5xl md:text-7xl">Roles where I owned the system.</h2> */}
         <h2 className="display mt-5 text-5xl md:text-7xl">My Work Experience</h2>
       </div>
-      <div ref={track} className="mt-16 flex w-max gap-8 px-[5vw] pb-24 md:px-[8vw]">
+      <div ref={track} className="mt-10 flex flex-col gap-12 px-[5vw] pb-16 md:mt-16 md:w-max md:flex-row md:gap-8 md:px-[8vw] md:pb-24">
         {experience.map((role) => (
           <article
             key={role.id}
-            className="w-[88vw] shrink-0 border-t-2 border-signal pt-8 md:w-[36vw]"
+            className="w-full shrink-0 border-t-2 border-signal pt-8 md:w-[36vw]"
           >
             <p className="index-mark">
               {role.start} - {role.end}

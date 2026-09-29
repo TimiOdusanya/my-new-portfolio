@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useRef, useState } from "react";
 import { ProjectStorySlideshow } from "@/components/experience/home/ProjectStorySlideshow";
@@ -88,11 +89,15 @@ export function VoyageChapter() {
               {preview ? (
                 <div>
                   <Link href={`/work/${preview.slug}`} className="block">
-                    <div className="relative aspect-[16/10] overflow-hidden border border-ink/10">
-                      <img
+                    <div className="relative aspect-[16/10] overflow-hidden border border-ink/10 bg-bone-deep">
+                      <Image
+                        key={preview.slug}
                         src={preview.image}
                         alt={preview.imageAlt}
-                        className="h-full w-full object-cover object-top"
+                        fill
+                        quality={92}
+                        sizes="(min-width: 1024px) 42vw, 100vw"
+                        className="object-contain object-center"
                       />
                     </div>
                   </Link>
@@ -122,7 +127,7 @@ export function VoyageChapter() {
                       href={`/work/${item.slug}`}
                       onMouseEnter={() => setPreviewSlug(item.slug)}
                       onFocus={() => setPreviewSlug(item.slug)}
-                      className="flex items-baseline justify-between gap-6 py-5"
+                      className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 py-5"
                     >
                       <span className={cn("display text-2xl transition-colors duration-300", lit ? "text-signal" : "text-ink")}>
                         {item.name}

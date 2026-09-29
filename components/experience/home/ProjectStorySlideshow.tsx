@@ -14,6 +14,8 @@ export type StorySlide = {
 type ProjectStorySlideshowProps = {
   slides: StorySlide[];
   tone?: "ink" | "bone";
+  captions?: boolean;
+  fit?: "cover" | "contain";
   className?: string;
   imageClassName?: string;
 };
@@ -21,6 +23,8 @@ type ProjectStorySlideshowProps = {
 export function ProjectStorySlideshow({
   slides,
   tone = "ink",
+  captions = true,
+  fit = "contain",
   className,
   imageClassName,
 }: ProjectStorySlideshowProps) {
@@ -43,16 +47,18 @@ export function ProjectStorySlideshow({
 
   return (
     <div className={cn("grid gap-5", className)}>
-      <div className={cn("relative aspect-[16/10] overflow-hidden border", imageClassName)}>
+      <div className={cn("relative aspect-[16/10] overflow-hidden border bg-bone-deep/40", imageClassName)}>
         {slides.map((slide, slideIndex) => (
           <Image
             key={slide.src}
             src={slide.src}
             alt={slide.alt}
             fill
-            sizes="(min-width: 1024px) 70vw, 100vw"
+            quality={90}
+            sizes="(min-width: 1280px) 80vw, 100vw"
             className={cn(
-              "object-cover object-top transition-opacity duration-700",
+              "transition-opacity duration-700",
+              fit === "contain" ? "object-contain object-center" : "object-cover object-center",
               slideIndex === index ? "opacity-100" : "opacity-0",
             )}
           />
@@ -74,6 +80,7 @@ export function ProjectStorySlideshow({
           </div>
         ) : null}
       </div>
+      {captions ? (
       <div>
         <p className="index-mark text-signal">{active.title}</p>
         <p
@@ -85,6 +92,7 @@ export function ProjectStorySlideshow({
           {active.body}
         </p>
       </div>
+      ) : null}
     </div>
   );
 }

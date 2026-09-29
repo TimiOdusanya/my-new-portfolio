@@ -35,14 +35,14 @@ export function ClimbSystem() {
   const root = useRef<HTMLElement>(null);
   const [active, setActive] = useState<(typeof nodes)[number]["id"]>("founder");
   const current = nodes.find((node) => node.id === active) ?? nodes[0];
-  const slides = project ? storySlidesForProject(project) : [];
 
   useGSAP(
     () => {
       const node = root.current;
       if (!node) return;
       const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (reduced) return;
+      const compact = window.matchMedia("(max-width: 1023px)").matches;
+      if (reduced || compact) return;
 
       const paths = gsap.utils.toArray<SVGPathElement>(".climb-link");
       paths.forEach((path) => {
@@ -75,10 +75,13 @@ export function ClimbSystem() {
     { scope: root },
   );
 
+  const slides = project ? storySlidesForProject(project) : [];
+
   return (
+    <>
     <section id="systems" ref={root} className="surface-moss relative overflow-hidden">
       <div className="flex min-h-[100svh] flex-col justify-between px-[5vw] py-16 md:px-[8vw]">
-        <div className="flex items-start justify-between gap-6">
+        <div className="flex flex-col items-start justify-between gap-6 md:flex-row">
           <div>
             <p className="index-mark">
               <span data-signal className="inline-block h-2 w-2 bg-signal align-middle" />
@@ -100,7 +103,7 @@ export function ClimbSystem() {
           </div>
         </div>
 
-        <div className="relative mt-10 h-[52vh] min-h-[320px]">
+        <div className="relative mt-10 h-[68vh] min-h-[420px] lg:h-[52vh] lg:min-h-[320px]">
           <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full overflow-visible" aria-hidden="true">
             {links.map(([from, to]) => {
               const a = nodes.find((item) => item.id === from);
@@ -136,10 +139,6 @@ export function ClimbSystem() {
           ))}
         </div>
 
-        {slides.length > 0 ? (
-          <ProjectStorySlideshow slides={slides} className="mt-8" imageClassName="border-bone/15" />
-        ) : null}
-
         <div className="climb-readout grid gap-6 border-t border-bone/15 pt-8 md:grid-cols-[1.2fr_0.8fr]">
           <div>
             <p className="index-mark text-signal">{current.label}</p>
@@ -156,5 +155,19 @@ export function ClimbSystem() {
         </div>
       </div>
     </section>
+    {slides.length > 0 ? (
+      <section className="surface-moss px-[5vw] pb-16 md:px-[8vw] md:pb-24">
+        <p className="index-mark">The product</p>
+        <div className="mt-6">
+          <ProjectStorySlideshow
+            slides={slides}
+            captions={false}
+            fit="contain"
+            imageClassName="border-bone/15 bg-[#f4f1ea]"
+          />
+        </div>
+      </section>
+    ) : null}
+    </>
   );
 }

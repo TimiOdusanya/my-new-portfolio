@@ -95,7 +95,7 @@ export function StatusRail() {
 
       <nav
         className={cn(
-          "fixed inset-0 z-50 bg-ink px-8 pt-24 text-bone transition-transform duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] md:hidden",
+          "fixed inset-0 z-50 overflow-y-auto bg-ink px-8 pt-24 pb-16 text-bone transition-transform duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] md:hidden",
           open ? "translate-y-0" : "-translate-y-full",
         )}
         aria-label="Mobile"
@@ -105,7 +105,7 @@ export function StatusRail() {
             key={item.href}
             href={item.href}
             onClick={() => setOpen(false)}
-            className="display block py-3 text-5xl"
+            className="display block py-3 text-4xl sm:text-5xl"
           >
             {item.label}
           </Link>

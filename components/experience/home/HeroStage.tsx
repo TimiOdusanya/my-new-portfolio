@@ -22,7 +22,8 @@ export function HeroStage() {
 
       const letters = gsap.utils.toArray<HTMLElement>(".hero-letter");
       const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (reduced) return;
+      const compact = window.matchMedia("(max-width: 1023px)").matches;
+      if (reduced || compact) return;
 
       const onMove = (event: PointerEvent) => {
         const rect = plane.getBoundingClientRect();
@@ -89,14 +90,14 @@ export function HeroStage() {
             <h1 className="sr-only">
               {site.displayName}, {site.title}
             </h1>
-            <p aria-hidden="true" className="hero-first display text-[16vw] leading-[0.78] tracking-[-0.055em] text-ink md:text-[11vw]">
+            <p aria-hidden="true" className="hero-first display text-[10vw] leading-[0.82] tracking-[-0.055em] text-ink md:text-[11vw] md:leading-[0.78]">
               {first.map((letter, index) => (
                 <span key={`${letter}-${index}`} className="hero-letter kinetic-letter">
                   {letter}
                 </span>
               ))}
             </p>
-            <p aria-hidden="true" className="hero-last display text-[16vw] leading-[0.78] tracking-[-0.055em] text-ink md:text-[11vw]">
+            <p aria-hidden="true" className="hero-last display text-[10vw] leading-[0.82] tracking-[-0.055em] text-ink md:text-[11vw] md:leading-[0.78]">
               {last.map((letter, index) => (
                 <span key={`${letter}-${index}`} className="hero-letter-last kinetic-letter">
                   {letter}

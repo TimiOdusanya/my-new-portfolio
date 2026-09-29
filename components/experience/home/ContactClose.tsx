@@ -60,7 +60,7 @@ export function ContactClose() {
       <Magnetic className="mt-16 inline-block">
         <a
           href={`mailto:${site.email}`}
-          className="display block text-4xl text-signal underline decoration-signal/40 underline-offset-8 transition-colors hover:text-ink hover:decoration-ink sm:text-6xl md:text-7xl"
+          className="display block max-w-full text-2xl break-words text-signal underline decoration-signal/40 underline-offset-8 transition-colors hover:text-ink hover:decoration-ink sm:text-6xl md:text-7xl"
         >
           {site.email}
         </a>

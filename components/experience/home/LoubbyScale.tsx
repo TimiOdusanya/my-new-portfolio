@@ -27,7 +27,11 @@ export function LoubbyScale() {
       if (!node || !project) return;
 
       const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (reduced) return;
+      const compact = window.matchMedia("(max-width: 1023px)").matches;
+      if (reduced || compact) {
+        if (number.current) number.current.textContent = "200K+";
+        return;
+      }
 
       const state = { value: 0 };
       const timeline = gsap.timeline({
@@ -82,7 +86,7 @@ export function LoubbyScale() {
         <div className="relative">
           <p
             ref={number}
-            className="loubby-number display text-center text-[28vw] leading-[0.78] tracking-[-0.06em] text-signal md:text-[20vw]"
+            className="loubby-number display text-center text-[22vw] leading-[0.78] tracking-[-0.06em] text-signal md:text-[20vw]"
           >
             0
           </p>
@@ -103,8 +107,10 @@ export function LoubbyScale() {
         <div className="grid items-end gap-8 lg:grid-cols-[1.3fr_0.7fr]">
           <ProjectStorySlideshow
             slides={slides}
+            captions={false}
+            fit="contain"
             className="loubby-frame"
-            imageClassName="border-bone/15"
+            imageClassName="aspect-video border-bone/15 bg-ink"
           />
           <div className="loubby-note">
             <p className="index-mark">Owned</p>

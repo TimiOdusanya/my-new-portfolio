@@ -95,11 +95,6 @@ export const metadata: Metadata = {
   other: {
     "google-site-verification": "pzXnbJA1JFlYbNiLPEX1pjpvSIZP3OjPS0ba_6KYX1Q",
   },
-  icons: {
-    icon: [{ url: "/profile.png", type: "image/png" }],
-    apple: [{ url: "/profile.png", type: "image/png" }],
-    shortcut: [{ url: "/profile.png", type: "image/png" }],
-  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

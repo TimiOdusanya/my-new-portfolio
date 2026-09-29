@@ -30,14 +30,15 @@ export function Laboratory({ projects }: { projects: AutomationProject[] }) {
       const node = root.current;
       if (!node || !active) return;
       const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const compact = window.matchMedia("(max-width: 1023px)").matches;
 
       const paths = gsap.utils.toArray<SVGPathElement>(".lab-link");
       paths.forEach((path) => {
         const length = path.getTotalLength();
-        gsap.set(path, { strokeDasharray: length, strokeDashoffset: reduced ? 0 : length });
+        gsap.set(path, { strokeDasharray: length, strokeDashoffset: reduced || compact ? 0 : length });
       });
 
-      if (reduced) return;
+      if (reduced || compact) return;
 
       const timeline = gsap.timeline({
         scrollTrigger: {
